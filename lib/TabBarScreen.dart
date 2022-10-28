@@ -8,6 +8,9 @@ class TabBarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Stack(
       children: [
         Container(
@@ -15,7 +18,7 @@ class TabBarScreen extends StatelessWidget {
             color: Color.fromARGB(255, 233, 233, 233),
             ),
           child: Padding(
-            padding: EdgeInsets.only(top: 100, left: 80, right: 80, bottom: 50),
+            padding: EdgeInsets.only(top: screenHeight*0.135, left: screenHeight*0.1, right: screenHeight*0.1, bottom: screenHeight*0.0675),
             child: DefaultTabController(
               length: 2,
               child: Scaffold(
@@ -52,11 +55,12 @@ class TabBarScreen extends StatelessWidget {
         ),
 
         Padding(
-          padding: EdgeInsets.only(top: 10, left: 80),
+          padding: EdgeInsets.only(top: 10, left: screenHeight*0.1),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(35),
+            borderRadius: BorderRadius.circular(40),
             child: Image.asset('assets/images/logo.jpg',
-            scale: 5,),
+            width: screenWidth*0.115,
+            height: screenHeight*0.115,),
           ),
         ),
       ],
