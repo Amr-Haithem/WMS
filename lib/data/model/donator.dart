@@ -1,4 +1,4 @@
-import 'package:storage_management_system/Data/Models/user.dart';
+import 'package:storage_management_system/data/model/user.dart';
 
 class Donator extends User {
   int? noOfPrevDonations;

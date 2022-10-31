@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:storage_management_system/TabBarScreen.dart';
+
+import 'ui/TabBarScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: TabBarScreen(),
+      home: const TabBarScreen(),
     );
   }
 }
