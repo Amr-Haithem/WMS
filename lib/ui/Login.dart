@@ -1,7 +1,8 @@
- import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:storage_management_system/constants/project_colors.dart';
+
+import 'Register.dart';
+
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -27,35 +28,42 @@ class _LoginState extends State<Login> {
           Wrap(
             children: [
               const Text('New to Resala?',
-              softWrap: true,
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'IBM',
-                fontWeight: FontWeight.w500
-              ),),
 
-              TextButton(
-                onPressed: (){},
-                child: const Text('Sign up for free',
                 softWrap: true,
                 style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'IBM',
-                fontWeight: FontWeight.w500,
-                color: Color(0xFFDA8F12),
+                    fontSize: 20,
+                    fontFamily: 'IBM',
+                    fontWeight: FontWeight.w500
                 ),),
-                )
+
+
+
+              TextButton(
+                onPressed: (){
+                  const Register();
+                },
+                child: const Text('Sign up for free',
+                  softWrap: true,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: mainBlue,
+                    fontFamily: 'IBM',
+                    fontWeight: FontWeight.w500,
+
+                  ),),
+              ),
             ],
           ),
+
 
           Container(
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.grey,
               ),
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular (15),
             ),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
               child: TextField(
                 decoration: InputDecoration(
@@ -82,7 +90,7 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
                   child: TextField(
                     obscureText: ishidden,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Password',
                       hintStyle: TextStyle(
@@ -102,7 +110,7 @@ class _LoginState extends State<Login> {
                     });
                   },
                   child: Image.asset(ishidden? 'assets/images/hidden.png':'assets/images/view.png',
-                  scale: 25,
+                    scale: 25,
                   ),
                 ),
               ),
@@ -113,33 +121,22 @@ class _LoginState extends State<Login> {
             alignment: Alignment.centerLeft,
             child: TextButton(
               onPressed: (){},
-              child: Text('Forgot Password?',
-              style: TextStyle(
-              fontSize: 20,
-              fontFamily: 'IBM',
-              fontWeight: FontWeight.w500,
-              color: Color(0xFFDA8F12),
-              ),),
-              ),
+              child: const Text('Forgot Password?',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'IBM',
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFFDA8F12),
+                ),),
+            ),
           ),
 
           Row(
             children: [
               Expanded(
                 child: TextButton(
-                  
-                  onPressed: () {  },
 
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 11),
-                    child: Text('Login',
-                    softWrap: true,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),),
-                  ),
+                  onPressed: () {  },
 
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Color(0xFF0F62FE)),
@@ -150,7 +147,18 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
+
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 11),
+                    child: Text('Login',
+                      softWrap: true,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                      ),),
                   ),
+                ),
               ),
             ],
           ),
