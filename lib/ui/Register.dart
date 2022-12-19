@@ -14,6 +14,7 @@ class Register extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const Text('Registration',
+
             softWrap: true,
 
             style: TextStyle(
@@ -22,6 +23,7 @@ class Register extends StatelessWidget {
               fontFamily: 'IBM',
               fontWeight: FontWeight.w600,
             ),
+
           ),
 
           const SizedBox(height: 5,),
@@ -122,7 +124,10 @@ class Register extends StatelessWidget {
                   onPressed: () {  },
 
                   style: ButtonStyle(
+
                     backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,39,50,139)),
+
+
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -134,12 +139,14 @@ class Register extends StatelessWidget {
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 11),
                     child: Text('Register',
+
                       softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         fontSize: 20,
                       ),),
+
                   ),
                 ),
               ),

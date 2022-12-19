@@ -1,16 +1,16 @@
+import 'category.dart';
+
 class DonatedItem{
   String? id;
-  String? name;
+  Category? category;
   String? donatorID;
-  String? storageID;
   DateTime? donationDate;
   String? itemSize;   //item size in meter squared
 
   DonatedItem({
     this.id,
-    this.name,
+    this.category,
     this.donatorID,
-    this.storageID,
     this.donationDate,
     this.itemSize
 });
