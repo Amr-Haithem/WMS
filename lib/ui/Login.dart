@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 
+import 'Donation_screen.dart';
 import 'Register.dart';
 
 
@@ -87,7 +88,7 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 2),
                   child: TextField(
                     obscureText: ishidden,
                     decoration: const InputDecoration(
@@ -136,7 +137,9 @@ class _LoginState extends State<Login> {
               Expanded(
                 child: TextButton(
 
-                  onPressed: () {  },
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DonationScreen()));
+                  },
 
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Color(0xFF0F62FE)),

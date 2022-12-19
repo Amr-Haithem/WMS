@@ -1,173 +1,214 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:storage_management_system/constants/project_colors.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+import 'package:storage_management_system/constants/project_colors.dart';
+import 'package:storage_management_system/ui/button_widget.dart';
+
+const List<String> donatedItemCategories = <String>['clothes', 'electronics', 'paper', 'furniture', 'other'];
+const List<String> areas = <String>['Nasr City', 'Maadi', '6 October', 'Giza', 'Haram'];
+
+class DonationScreen extends StatefulWidget {
+  const DonationScreen({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<DonationScreen> createState() => _DonationScreenState();
 }
 
-class _LoginState extends State<Login> {
-  bool ishidden = true;
+class _DonationScreenState extends State<DonationScreen> {
+  String donatedItemDropdownValue = donatedItemCategories.first;
+  String areaDropdownValue = areas.first;
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: screenWidth*0.275),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          const Text('Log in',
-          softWrap: true,
-          style: TextStyle(
-            color: mainBlue,
-            fontSize: 30,
-            fontFamily: 'IBM',
-            fontWeight: FontWeight.w600,
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          leading: BackButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
           ),
-          ),
-
-          Wrap(
-            children: [
-              Text('New to Resala?',
-              softWrap: true,
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'IBM',
-                fontWeight: FontWeight.w500
-              ),),
-
-              TextButton(
-                onPressed: (){},
-                child: Text('Sign up for free',
-                softWrap: true,
-                style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'IBM',
-                fontWeight: FontWeight.w500,
-                color: Color(0xFFDA8F12),
-                ),),
-                )
-            ],
-          ),
-
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey,
-              ),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Email Address',
-                  hintStyle: TextStyle(
-                    fontFamily: 'IBM',
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
-                  child: TextField(
-                    obscureText: ishidden,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Password',
-                      hintStyle: TextStyle(
-                        fontFamily: 'IBM',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                right: 26,
-                top: 17,
-                child: InkWell(
-                  onTap: (){
-                    setState(() {
-                      ishidden = !ishidden;
-                    });
-                  },
-                  child: Image.asset(ishidden? 'assets/images/hidden.png':'assets/images/view.png',
-                  scale: 25,
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton(
-              onPressed: (){},
-              child: Text('Forgot Password?',
-              style: TextStyle(
-              fontSize: 20,
-              fontFamily: 'IBM',
-              fontWeight: FontWeight.w500,
-              color: Color(0xFFDA8F12),
-              ),),
-              ),
-          ),
-
-          Row(
-            children: [
+          backgroundColor: mainBlue,
+          title: const Text('Make a donation'),
+          centerTitle: true,
+        ),
+        body:
+        Container(
+      decoration: const BoxDecoration(
+      image: DecorationImage(
+        opacity: 0.1,
+          image: AssetImage("assets/images/Resala.jpeg"),
+     // fit: BoxFit.cover,
+    ),
+    ),
+    child:
               Expanded(
-                child: TextButton(
-                  
-                  onPressed: () {  },
 
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 11),
-                    child: Text('Login',
-                    softWrap: true,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),),
-                  ),
+                child: Column(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children:   [
 
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xFF0F62FE)),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        side: BorderSide(width: 1, color: Color(0xFF0F62FE)),
+                    const Center(
+                      child: Text("Even your smallest gifts can make a huge impact.\n"
+                          "Thank you for your donations",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: mainBlue,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
-                  ),
-                  ),
-              ),
-            ],
-          ),
+                    // const Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: 200, vertical: 2),
+                    //   child:  Image(image: AssetImage("assets/images/Resala.jpeg")),
+                    //
+                    // ),
+                    // //   SizedBox(height: 50),
 
-          SizedBox(height: screenHeight*0.0675,),
+                    //Name
+                   const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 2),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            label: Text('Name'),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: mainRed),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.cyan),
+                            ),
+                          ),
+                        ),
+                      ),
 
-        ],
+                    //   SizedBox(height: 50),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+
+                        const SizedBox(width: 50),
+
+                        const Text ('Area:   '),
+
+                        DropdownButton<String>(
+                          value: areaDropdownValue,
+                          icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                          elevation: 16,
+                          style: const TextStyle(color: Colors.black54),
+                          underline: Container(
+                            height: 1,
+                            color: mainRed,
+                          ),
+                          onChanged: (String? value) {
+                            // This is called when the user selects an item.
+                            setState(() {
+                              areaDropdownValue = value!;
+                            });
+                          },
+                          items: areas.map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value,),
+                              // style: TextStyle(
+                              //   color: Colors.cyan,
+                              // ),),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
+
+
+                    //address
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 2),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          label: Text('Detailed address'),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: mainRed),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.cyan),
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+                  //  SizedBox(height: 50),
+
+
+                    //phone number
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 2),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          label: Text('Phone number'),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: mainRed),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.cyan),
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(width: 50),
+
+                      const Text ('Donation category:   '),
+
+                  DropdownButton<String>(
+                    value: donatedItemDropdownValue,
+                    icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.black54),
+                    underline: Container(
+                      height: 1,
+                      color: mainRed,
+                    ),
+                    onChanged: (String? value) {
+                      // This is called when the user selects an item.
+                      setState(() {
+                        donatedItemDropdownValue = value!;
+                      });
+                    },
+                    items: donatedItemCategories.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value,),
+                        // style: TextStyle(
+                        //   color: Colors.cyan,
+                        // ),),
+                      );
+                    }).toList(),
+                  ),
+                    ],
+                  ),
+
+
+                    ButtonWidget(text: 'Submit', onClicked: (){})
+
+                ],
+
+
+                ),
+                ),
+
+
+      ),
+
       ),
     );
+
   }
 }
