@@ -22,18 +22,11 @@ class _LoginState extends State<Login> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Log in',
-          softWrap: true,
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: 'IBM',
-            fontWeight: FontWeight.w600,
-          ),
-          ),
+
 
           Wrap(
             children: [
-              Text('New to Resala?',
+              const Text('New to Resala?',
               softWrap: true,
               style: TextStyle(
                 fontSize: 20,
@@ -43,7 +36,7 @@ class _LoginState extends State<Login> {
 
               TextButton(
                 onPressed: (){},
-                child: Text('Sign up for free',
+                child: const Text('Sign up for free',
                 softWrap: true,
                 style: TextStyle(
                 fontSize: 20,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:storage_management_system/Register.dart';
+import 'package:storage_management_system/Screens/Register.dart';
 
-import 'Login.dart';
+import 'Donation_screen.dart';
+
 
 class TabBarScreen extends StatelessWidget {
   const TabBarScreen({super.key});
@@ -14,12 +15,12 @@ class TabBarScreen extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color.fromARGB(255, 233, 233, 233),
             ),
           child: Padding(
             padding: EdgeInsets.only(top: screenHeight*0.135, left: screenHeight*0.1, right: screenHeight*0.1, bottom: screenHeight*0.0675),
-            child: DefaultTabController(
+            child: const DefaultTabController(
               length: 2,
               child: Scaffold(
                 appBar: TabBar(

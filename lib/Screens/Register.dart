@@ -1,7 +1,5 @@
- import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:storage_management_system/constants/project_colors.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -15,16 +13,18 @@ class Register extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Registration',
+          const Text('Registration',
           softWrap: true,
+
           style: TextStyle(
+            color: mainBlue,
             fontSize: 30,
             fontFamily: 'IBM',
             fontWeight: FontWeight.w600,
           ),
           ),
 
-          SizedBox(height: 5,),
+          const SizedBox(height: 5,),
 
           Container(
             decoration: BoxDecoration(
@@ -33,7 +33,7 @@ class Register extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
               child: TextField(
                 decoration: InputDecoration(
@@ -54,7 +54,7 @@ class Register extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
               child: TextField(
                 decoration: InputDecoration(
@@ -75,7 +75,7 @@ class Register extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
               child: TextField(
                 obscureText: true,
@@ -97,7 +97,7 @@ class Register extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
               child: TextField(
                 obscureText: true,
@@ -112,7 +112,7 @@ class Register extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
 
           Row(
             children: [
@@ -121,7 +121,17 @@ class Register extends StatelessWidget {
                   
                   onPressed: () {  },
 
-                  child: Padding(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,227,26,36)),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        side: const BorderSide(width: 1, color: Color(0xFF0F62FE)),
+                      ),
+                    ),
+                  ),
+
+                  child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 11),
                     child: Text('Register',
                     softWrap: true,
@@ -131,22 +141,12 @@ class Register extends StatelessWidget {
                       fontSize: 20,
                     ),),
                   ),
-
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xFF0F62FE)),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        side: BorderSide(width: 1, color: Color(0xFF0F62FE)),
-                      ),
-                    ),
-                  ),
                   ),
               ),
             ],
           ),
 
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
 
         ],
       ),
