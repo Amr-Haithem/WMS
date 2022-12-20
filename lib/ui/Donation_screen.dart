@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:storage_management_system/constants/project_colors.dart';
+import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/ui/button_widget.dart';
 
 const List<String> donatedItemCategories = <String>['clothes', 'electronics', 'paper', 'furniture', 'other'];
@@ -74,7 +75,7 @@ class _DonationScreenState extends State<DonationScreen> {
                           decoration: InputDecoration(
                             label: Text('Name'),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: mainRed),
+                              borderSide: BorderSide(color: underlineColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.cyan),
@@ -100,7 +101,7 @@ class _DonationScreenState extends State<DonationScreen> {
                           style: const TextStyle(color: Colors.black54),
                           underline: Container(
                             height: 1,
-                            color: mainRed,
+                            color: underlineColor,
                           ),
                           onChanged: (String? value) {
                             // This is called when the user selects an item.
@@ -124,12 +125,12 @@ class _DonationScreenState extends State<DonationScreen> {
 
                     //address
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 2),
+                      padding: EdgeInsets.symmetric(horizontal: medium_padding*2, vertical: 2),
                       child: TextField(
                         decoration: InputDecoration(
                           label: Text('Detailed address'),
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: mainRed),
+                            borderSide: BorderSide(color: underlineColor),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.cyan),
@@ -150,7 +151,7 @@ class _DonationScreenState extends State<DonationScreen> {
                         decoration: InputDecoration(
                           label: Text('Phone number'),
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: mainRed),
+                            borderSide: BorderSide(color: underlineColor),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.cyan),
@@ -163,7 +164,7 @@ class _DonationScreenState extends State<DonationScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const SizedBox(width: 50),
+                      const SizedBox(width: medium_padding*2),
 
                       const Text ('Donation category:   '),
 
@@ -174,7 +175,7 @@ class _DonationScreenState extends State<DonationScreen> {
                     style: const TextStyle(color: Colors.black54),
                     underline: Container(
                       height: 1,
-                      color: mainRed,
+                      color: underlineColor,
                     ),
                     onChanged: (String? value) {
                       // This is called when the user selects an item.

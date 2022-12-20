@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:storage_management_system/constants/project_measures.dart';
 
 import '../constants/project_colors.dart';
 
@@ -18,13 +19,13 @@ class ButtonWidget extends StatelessWidget {
       shape: const StadiumBorder(), //button shaped like a stadium
       onPrimary: Colors.white,
       primary: mainBlue,
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: medium_padding, vertical: small_padding*2),
     ),
     onPressed: onClicked,
 
     child: Text(
       text,
-      style: const TextStyle(fontSize: 20),
+      style: const TextStyle(fontSize: medium_font_size),
     ),
   );
 }

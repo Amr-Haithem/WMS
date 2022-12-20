@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 
+import 'Donation_screen.dart';
+import 'button_widget.dart';
+
 class Register extends StatelessWidget {
   const Register({super.key});
 
@@ -31,7 +34,7 @@ class Register extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color: bordersColor,
               ),
               borderRadius: BorderRadius.circular(15),
             ),
@@ -52,7 +55,7 @@ class Register extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color: bordersColor,
               ),
               borderRadius: BorderRadius.circular(15),
             ),
@@ -73,7 +76,7 @@ class Register extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color: bordersColor,
               ),
               borderRadius: BorderRadius.circular(15),
             ),
@@ -95,7 +98,7 @@ class Register extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color: bordersColor,
               ),
               borderRadius: BorderRadius.circular(15),
             ),
@@ -116,41 +119,12 @@ class Register extends StatelessWidget {
 
           const SizedBox(height: 10,),
 
-          Row(
-            children: [
-              Expanded(
-                child: TextButton(
+          ButtonWidget(
+            text: 'Register',
+            onClicked: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => DonationScreen()));
+            },
 
-                  onPressed: () {  },
-
-                  style: ButtonStyle(
-
-                    backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,39,50,139)),
-
-
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        side: const BorderSide(width: 1, color: Color(0xFF0F62FE)),
-                      ),
-                    ),
-                  ),
-
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 11),
-                    child: Text('Register',
-
-                      softWrap: true,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),),
-
-                  ),
-                ),
-              ),
-            ],
           ),
 
           const SizedBox(height: 30,),
