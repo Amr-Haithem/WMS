@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:storage_management_system/constants/project_colors.dart';
 
-import 'Donation_screen.dart';
+import 'Login.dart';
 import 'Register.dart';
+import 'Donation_screen.dart';
 
 
 class TabBarScreen extends StatelessWidget {
@@ -16,11 +18,11 @@ class TabBarScreen extends StatelessWidget {
       children: [
         Container(
           decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 233, 233, 233),
+            color: mainOffWhite,
             ),
           child: Padding(
             padding: EdgeInsets.only(top: screenHeight*0.135, left: screenHeight*0.1, right: screenHeight*0.1, bottom: screenHeight*0.0675),
-            child: const DefaultTabController(
+            child:  const DefaultTabController(
               length: 2,
               child: Scaffold(
                 appBar: TabBar(
@@ -29,6 +31,7 @@ class TabBarScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(vertical: 7),
                         child: Text('Log in',
                         style: TextStyle(
+                          color: mainBlue,
                           fontSize: 20,
                           fontFamily: 'IBM',
                         ),),
@@ -37,6 +40,7 @@ class TabBarScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(vertical: 7),
                         child: Text('Register',
                         style: TextStyle(
+                          color: mainBlue,
                           fontSize: 20,
                           fontFamily: 'IBM',
                         ),),
@@ -44,10 +48,12 @@ class TabBarScreen extends StatelessWidget {
                     ],
                   ),
 
-                  body: TabBarView(
+                  body:  TabBarView(
                     children: [
+
                       Login(),
                       Register(),
+
                     ],
                   ),
               ),

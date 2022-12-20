@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
+import 'package:storage_management_system/constants/project_measures.dart';
+import 'package:storage_management_system/ui/button_widget.dart';
 
+import 'Donation_screen.dart';
 import 'Register.dart';
 
+const List<String> userTypes = <String>['Donator', 'Employee', 'Admin'];
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -13,6 +17,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool ishidden = true;
+  String userTypeDropdownValue = userTypes.first;
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -31,7 +37,7 @@ class _LoginState extends State<Login> {
 
                 softWrap: true,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: medium_font_size,
                     fontFamily: 'IBM',
                     fontWeight: FontWeight.w500
                 ),),
@@ -45,7 +51,7 @@ class _LoginState extends State<Login> {
                 child: const Text('Sign up for free',
                   softWrap: true,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: medium_font_size,
                     color: mainBlue,
                     fontFamily: 'IBM',
                     fontWeight: FontWeight.w500,
@@ -59,9 +65,9 @@ class _LoginState extends State<Login> {
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color:  mainBlue,
               ),
-              borderRadius: BorderRadius.circular (15),
+              borderRadius: BorderRadius.circular(15),
             ),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
@@ -82,12 +88,12 @@ class _LoginState extends State<Login> {
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.grey,
+                    color: mainBlue,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 2),
                   child: TextField(
                     obscureText: ishidden,
                     decoration: const InputDecoration(
@@ -117,54 +123,84 @@ class _LoginState extends State<Login> {
             ],
           ),
 
-          Align(
-            alignment: Alignment.centerLeft,
+
+          Center(
             child: TextButton(
               onPressed: (){},
               child: const Text('Forgot Password?',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: medium_font_size,
                   fontFamily: 'IBM',
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFFDA8F12),
+                  color: mainRed,
                 ),),
             ),
           ),
 
-          Row(
-            children: [
-              Expanded(
-                child: TextButton(
+    Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
 
-                  onPressed: () {  },
+        const SizedBox(width: medium_padding*2),
 
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xFF0F62FE)),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        side: BorderSide(width: 1, color: Color(0xFF0F62FE)),
-                      ),
-                    ),
-                  ),
+        const Text ('Loging in as:   ',
+        style: TextStyle(
+          fontSize: medium_font_size,
+          color: mainBlue,
+        ),
+        ),
 
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 11),
-                    child: Text('Login',
-                      softWrap: true,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),),
-                  ),
-                ),
-              ),
-            ],
+        DropdownButton<String>(
+          value: userTypeDropdownValue,
+          icon: const Icon(Icons.keyboard_arrow_down_outlined),
+          elevation: 16,
+          style: const TextStyle(color: Colors.black54),
+          underline: Container(
+            height: 1,
+            color: mainBlue,
+          ),
+          onChanged: (String? value) {
+            //return selected userType
+            setState(() {
+              userTypeDropdownValue = value!;
+            });
+          },
+          items: userTypes.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value,),
+
+            );
+          }).toList(),
+        ),
+      ],
+    ),
+
+
+      ButtonWidget(
+              text: 'Login',
+              onClicked: () {
+                  if (userTypeDropdownValue == 'Donator')
+                  {
+                  print ('logged in as Donator');
+
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DonationScreen()));
+                  }
+                else if (userTypeDropdownValue == 'Employee')
+                  {
+                    print ('logged in as Employee');
+                    //Navigator.of(context).push(MaterialPageRoute(builder: (context) => EmployeeScreen()));
+                  }
+                else
+                  {
+                    print ('logged in as Admin');
+                  //Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdminScreen()));
+                   }
+              },
+
           ),
 
-          SizedBox(height: screenHeight*0.0675,),
-
+      SizedBox(height: screenHeight*0.0675,),
         ],
       ),
     );
