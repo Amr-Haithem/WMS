@@ -4,6 +4,7 @@ import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/ui/button_widget.dart';
 
 import 'Donation_screen.dart';
+import 'Employee_screen.dart';
 import 'Register.dart';
 
 const List<String> userTypes = <String>['Donator', 'Employee', 'Admin'];
@@ -184,12 +185,12 @@ class _LoginState extends State<Login> {
                   {
                   print ('logged in as Donator');
 
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DonationScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DonationScreen()));
                   }
                 else if (userTypeDropdownValue == 'Employee')
                   {
                     print ('logged in as Employee');
-                    //Navigator.of(context).push(MaterialPageRoute(builder: (context) => EmployeeScreen()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EmployeeDashboardScreen()));
                   }
                 else
                   {

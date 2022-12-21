@@ -35,6 +35,7 @@ class _DonationScreenState extends State<DonationScreen> {
           title: const Text('Make a donation'),
           centerTitle: true,
         ),
+
         body:
         Container(
       decoration: const BoxDecoration(

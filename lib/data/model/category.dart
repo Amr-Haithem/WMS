@@ -1,10 +1,21 @@
+import 'package:flutter/foundation.dart';
+
 class Category{
-  String categoryName;
+  int? numAvailable;
 
   Category({
-    required this.categoryName,
+    this.numAvailable,
 });
 }
 
-List <Category> categories = [];
 
+
+List <Category> categories = [ ];
+
+
+//sample categories
+Category clothes     = Category();
+Category electronics = Category();
+Category furniture   = Category();
+Category books       = Category();
+Category other       = Category();
