@@ -2,7 +2,7 @@ import 'category.dart';
 
 class DonatedItem{
   String? id;
-  Category? category;
+  DonatedItemCategory? category;
   String? donatorID;
   DateTime? donationDate;
   String? itemSize;   //item size in meter squared

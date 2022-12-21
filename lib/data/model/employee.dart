@@ -7,7 +7,7 @@ String? name;
 String? id;
 int? rank;
 StorageCenter? assignedStorageCenter;
-List <Category>? assignedCategories;
+List <DonatedItemCategory>? assignedCategories;
 
 Employee(
     {
@@ -25,7 +25,7 @@ Employee(
 
 
 //sample employees
-Employee sampleEmployee1= Employee(name: 'Mohamed', id: '19P7975', assignedStorageCenter: nasrCity,   rank:5,  assignedCategories: [clothes,furniture,electronics]);
+Employee sampleEmployee1= Employee(name: 'Mohamed Mahmoud', id: '19P7975', assignedStorageCenter: nasrCity,   rank:5,  assignedCategories: [clothes,furniture,electronics]);
 Employee sampleEmployee2= Employee(name: 'Amr',     id: '19P1234', assignedStorageCenter: maadi,      rank:4,  assignedCategories: [clothes,furniture] );
 Employee sampleEmployee3= Employee(name: 'Adham',   id: '19P5678', assignedStorageCenter: giza,       rank:5,  assignedCategories: [books,furniture,other] );
 Employee sampleEmployee4= Employee(name: 'Mohamed', id: '19P4321', assignedStorageCenter: mohandseen, rank:3,  assignedCategories: [clothes,electronics,] );

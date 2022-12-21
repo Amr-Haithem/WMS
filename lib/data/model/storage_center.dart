@@ -7,7 +7,7 @@ class StorageCenter{
   String? email;
   String? id;
   String? adminID;
-  List <Category>? categories;
+  List <DonatedItemCategory>? categories;
   List<String>? employeesIDs;
   int? capacity;  //storage
 
