@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/data/model/employee.dart';
 
-import '../constants/project_colors.dart';
+import '../../constants/project_colors.dart';
 
 
 class EmployeeCardWidget extends StatelessWidget {
@@ -83,25 +83,16 @@ class EmployeeCardWidget extends StatelessWidget {
                                         fontFamily: 'IBM')),
                                     const SizedBox(height: small_padding),
 
-                                  //
-                                  //   Text('Branch: ${employee.assignedCategories.}', style: const TextStyle(
-                                  //       color: Colors.blueAccent,
-                                  //       fontWeight: FontWeight.w700,
-                                  //       fontFamily: 'IBM')),
-                                  // //  const SizedBox(height: small_padding),
-
 
                                     Row
                                       (
-                                      mainAxisAlignment: MainAxisAlignment
-                                          .start,
-                                      crossAxisAlignment: CrossAxisAlignment
-                                          .center,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: <Widget>
                                       [
 
                                         RatingBarIndicator(
-                                          rating: 4.5,
+                                          rating: employee.rank,
                                           itemCount: 5,
                                           itemSize: 30.0,
                                           physics: const BouncingScrollPhysics(),
@@ -131,7 +122,7 @@ class EmployeeCardWidget extends StatelessWidget {
                                         //   },
                                         //
                                         // ),
-                                        const Text('4.6', style: TextStyle(
+                                         Text('${this.employee.rank}', style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w700,
                                             fontSize: large_font_size)),
@@ -150,7 +141,10 @@ class EmployeeCardWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+          CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 100,
+            child:Container(
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           opacity: 0.75,
@@ -159,6 +153,14 @@ class EmployeeCardWidget extends StatelessWidget {
                         ),
                       ),
                     ),
+          ),
+                    // CircleAvatar(
+                    //   backgroundColor: Colors.greenAccent[400],
+                    //   radius: 100,
+                    //   child: Image.asset("assets/images/Resala.jpeg", ),
+                    // ),
+
+
                     /// Item image
                     Align
                       (
@@ -170,13 +172,19 @@ class EmployeeCardWidget extends StatelessWidget {
                         child: SizedBox.fromSize
                           (
                           size: const Size.fromRadius(54.0),
-                          child: Material
-                            (
-                            elevation: small_padding,
-                            shadowColor: mainBlue,
-                            shape: const CircleBorder(),
-                            child: Image.asset('assets/images/Mohamed2.png'),
+                          child:   const CircleAvatar(
+                            foregroundColor: Colors.red,
+                            backgroundImage: AssetImage("assets/images/Mohamed2.png"),
                           ),
+
+                          // Material
+                          //   (
+                          //   elevation: small_padding,
+                          //   shadowColor: mainBlue,
+                          //   borderRadius: BorderRadius.
+                          //   shape:  const CircleBorder(side: BorderSide( )),
+                          //   child: Image.asset('assets/images/Mohamed2.png'),
+                          // ),
                         ),
                       ),
                     ),

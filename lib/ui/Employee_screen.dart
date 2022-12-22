@@ -3,9 +3,9 @@ import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/data/model/category.dart';
 import 'package:storage_management_system/data/model/employee.dart';
-import 'package:storage_management_system/ui/employee_card_widget.dart';
+import 'package:storage_management_system/ui/frequently_used_widgets/employee_card_widget.dart';
 
-import 'item_card_widget.dart';
+import 'frequently_used_widgets/item_card_widget.dart';
 
 class EmployeeDashboardScreen extends StatefulWidget {
   const EmployeeDashboardScreen({super.key});
@@ -25,9 +25,9 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
           elevation: 0.0,
           backgroundColor: Colors.transparent,
           leading: IconButton(
-            color: Colors.black,
+
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.arrow_back, color: mainBlue),
+            icon: const Icon(Icons.arrow_back_ios, color: mainBlue),
           ),
           title: const Text('Dashboard',
               style:
@@ -37,6 +37,7 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
           scrollDirection: Axis.vertical,
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: <Widget>[
+            const SizedBox(height: small_padding),
             EmployeeCardWidget(
               employee: sampleEmployee1,
               onClicked: () {},
@@ -48,13 +49,13 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
                 children: [
                   Column(
                     children: [
-                      const SizedBox(height: medium_padding),
+                      const SizedBox(height: large_padding),
                       ItemCardWidget(
                         onClicked: () {},
                         donatedItemCategory: electronics,
                         iconName: Icons.devices_outlined,
                       ),
-                      const SizedBox(height: medium_padding),
+                      const SizedBox(height: large_padding),
 
                       ItemCardWidget(
                         onClicked: () {},
@@ -63,18 +64,18 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: medium_padding),
+                  const SizedBox(width: large_padding),
 
                   Column(
                     children: [
-                      const SizedBox(height: medium_padding),
+                      const SizedBox(height: large_padding),
                       ItemCardWidget(
                         onClicked: () {},
                         donatedItemCategory: books,
                         iconName: Icons.menu_book_outlined,
 
                       ),
-                      const SizedBox(height: medium_padding),
+                      const SizedBox(height: large_padding),
 
                       ItemCardWidget(
                         onClicked: () {},
@@ -88,54 +89,6 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
               ),
             ),
 
-
-
-            //
-            // CustomScrollView(
-            //   primary: false,
-            //   slivers: <Widget>[
-            //     SliverPadding(
-            //       padding: const EdgeInsets.all(20),
-            //       sliver: SliverGrid.count(
-            //         crossAxisSpacing: 10,
-            //         mainAxisSpacing: 10,
-            //         crossAxisCount: 2,
-            //         children: <Widget>[
-            //           Container(
-            //             padding: const EdgeInsets.all(8),
-            //             color: Colors.green[100],
-            //             child: const Text("He'd have you all unravel at the"),
-            //           ),
-            //           Container(
-            //             padding: const EdgeInsets.all(8),
-            //             color: Colors.green[200],
-            //             child: const Text('Heed not the rabble'),
-            //           ),
-            //           Container(
-            //             padding: const EdgeInsets.all(8),
-            //             color: Colors.green[300],
-            //             child: const Text('Sound of screams but the'),
-            //           ),
-            //           Container(
-            //             padding: const EdgeInsets.all(8),
-            //             color: Colors.green[400],
-            //             child: const Text('Who scream'),
-            //           ),
-            //           Container(
-            //             padding: const EdgeInsets.all(8),
-            //             color: Colors.green[500],
-            //             child: const Text('Revolution is coming...'),
-            //           ),
-            //           Container(
-            //             padding: const EdgeInsets.all(8),
-            //             color: Colors.green[600],
-            //             child: const Text('Revolution, they...'),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // )
           ],
         ));
   }

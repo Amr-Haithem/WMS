@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DonatedItemCategory{
-  int? numAvailable;
-  int? emptyRoomFor; //space available for more of
+  int numAvailable;
+  int emptyRoomFor; //space available for more of
   String? name;
   IconData? iconName;
   DonatedItemCategory({
-    this.numAvailable,
+    required this.numAvailable,
     this.name,
-    this.emptyRoomFor,
+    required this.emptyRoomFor,
     this.iconName,
 });
 }

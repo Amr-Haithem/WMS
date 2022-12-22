@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
-import 'package:storage_management_system/ui/button_widget.dart';
+import 'package:storage_management_system/ui/frequently_used_widgets/button_widget.dart';
 
 import 'Donation_screen.dart';
 import 'Employee_screen.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/data/model/category.dart';
 
-import '../constants/project_colors.dart';
+import '../../constants/project_colors.dart';
 
 
 class ItemCardWidget extends StatefulWidget {
@@ -65,6 +65,7 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>
                               [
+
                                 Text('${widget.donatedItemCategory.name}', style: const TextStyle(
                                     color: mainRed,
                                     fontWeight: FontWeight.w700,
@@ -87,8 +88,10 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            //    widget.donatedItemCategory.numAvailable -=1;
-                                            //   widget.donatedItemCategory.emptyRoomFor +=1;
+                                            if ( widget.donatedItemCategory.numAvailable > 0 ) {
+                                                widget.donatedItemCategory.numAvailable--;
+                                                widget.donatedItemCategory.emptyRoomFor++;
+                                            }
                                           });
                                         }, child: const Text('-', style: TextStyle(color: Colors.black, fontSize: medium_font_size),),
                                       ),
@@ -110,8 +113,10 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            //    widget.donatedItemCategory.numAvailable +=1;
-                                            //    widget.donatedItemCategory.emptyRoomFor -=1;
+                                            if (widget.donatedItemCategory.emptyRoomFor > 0) {
+                                              widget.donatedItemCategory.numAvailable++;
+                                              widget.donatedItemCategory.emptyRoomFor--;
+                                            }
                                           });
                                         }, child: const Text('+', style: TextStyle(color: Colors.black, fontSize: medium_font_size),),
                                       ),
@@ -139,8 +144,7 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
                                       ),
                                       onPressed: () {
                                         setState(() {
-                                          //    widget.donatedItemCategory.numAvailable -=1;
-                                          //   widget.donatedItemCategory.emptyRoomFor +=1;
+                                          widget.donatedItemCategory.emptyRoomFor > 0 ? widget.donatedItemCategory.emptyRoomFor-- : widget.donatedItemCategory.emptyRoomFor = widget.donatedItemCategory.emptyRoomFor;
                                         });
                                       }, child: const Text('-', style: TextStyle(color: Colors.black, fontSize: medium_font_size),),
                                     ),
@@ -162,8 +166,7 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        //    widget.donatedItemCategory.numAvailable +=1;
-                                        //    widget.donatedItemCategory.emptyRoomFor -=1;
+                                        widget.donatedItemCategory.emptyRoomFor++;
                                       });
                                     }, child: const Text('+', style: TextStyle(color: Colors.black, fontSize: medium_font_size),),
                                   ),
