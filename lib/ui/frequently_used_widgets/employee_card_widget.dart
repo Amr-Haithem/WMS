@@ -6,7 +6,7 @@ import 'package:storage_management_system/data/model/employee.dart';
 import '../../constants/project_colors.dart';
 
 
-class EmployeeCardWidget extends StatelessWidget {
+class EmployeeCardWidget extends StatefulWidget {
   final Employee employee;
   final VoidCallback onClicked;
 
@@ -16,6 +16,11 @@ class EmployeeCardWidget extends StatelessWidget {
     required this.onClicked,
   }) : super(key: key);
 
+  @override
+  State<EmployeeCardWidget> createState() => _EmployeeCardWidgetState();
+}
+
+class _EmployeeCardWidgetState extends State<EmployeeCardWidget> {
   @override
   Widget build(BuildContext context) =>
       Stack
@@ -69,7 +74,7 @@ class EmployeeCardWidget extends StatelessWidget {
                                   [
 
 
-                                    Text('${employee.name}',
+                                    Text('${widget.employee.name}',
                                       style: const TextStyle(
                                           color: mainBlue,
                                           fontWeight: FontWeight.w700,
@@ -78,7 +83,7 @@ class EmployeeCardWidget extends StatelessWidget {
                                     ),
                                     const SizedBox(height: medium_padding),
 
-                                    Text('ID: ${employee.id}',
+                                    Text('ID: ${widget.employee.id}',
                                         style: const TextStyle(
                                             color: mainBlue,
                                             fontWeight: FontWeight.w700,
@@ -96,7 +101,7 @@ class EmployeeCardWidget extends StatelessWidget {
                                       [
 
                                         RatingBarIndicator(
-                                          rating: employee.rank,
+                                          rating: widget.employee.rank,
                                           itemCount: 5,
                                           itemSize: 30.0,
                                           physics: const BouncingScrollPhysics(),
@@ -126,7 +131,7 @@ class EmployeeCardWidget extends StatelessWidget {
                                         //   },
                                         //
                                         // ),
-                                        Text('${this.employee.rank}',
+                                        Text('${this.widget.employee.rank}',
                                             style: const TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w700,
@@ -177,10 +182,10 @@ class EmployeeCardWidget extends StatelessWidget {
                         child: SizedBox.fromSize
                           (
                           size: const Size.fromRadius(54.0),
-                          child: const CircleAvatar(
+                          child: CircleAvatar(
                             foregroundColor: Colors.red,
                             backgroundImage: AssetImage(
-                                "assets/images/Mohamed2.png"),
+                                widget.employee.profilePicUrl),
                           ),
 
                           // Material
@@ -204,5 +209,4 @@ class EmployeeCardWidget extends StatelessWidget {
           /// Review
         ],
       );
-
 }

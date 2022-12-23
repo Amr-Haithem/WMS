@@ -9,13 +9,11 @@ import '../../constants/project_colors.dart';
 class ItemCardWidget extends StatefulWidget {
   final DonatedItemCategory donatedItemCategory;
   final VoidCallback onClicked;
-  final IconData iconName;
 
   const ItemCardWidget({
     Key? key,
     required this.donatedItemCategory,
     required this.onClicked,
-    required this.iconName,
   }) : super(key: key);
 
   @override
@@ -197,9 +195,9 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
 
                             elevation: small_padding/2,
                             shadowColor: mainBlue,
-                            shape: CircleBorder(),
+                            shape: const CircleBorder(),
                             child: Icon(
-                              widget.iconName,
+                              widget.donatedItemCategory.iconName,
                               size: large_padding,
                               color: mainRed,
                             )

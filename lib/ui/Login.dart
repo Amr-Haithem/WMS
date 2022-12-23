@@ -4,6 +4,7 @@ import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/ui/admin_dashboard/admin_dashboard_screen.dart';
 import 'package:storage_management_system/ui/frequently_used_widgets/button_widget.dart';
 
+import '../data/model/employee.dart';
 import 'Donation_screen.dart';
 import 'Employee_screen.dart';
 import 'Register.dart';
@@ -27,183 +28,197 @@ class _LoginState extends State<Login> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: screenWidth*0.275),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
+      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.275),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
 
+            //logo on top
+            // Align(
+            //   alignment: Alignment.topCenter,
+            //   child: Container(
+            //     height: 150,
+            //     width: 150,
+            //     decoration: const BoxDecoration(
+            //       image: DecorationImage(
+            //         opacity: 1,
+            //         image: AssetImage("assets/images/logo.jpg"),
+            //         fit: BoxFit.contain,
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
-          Wrap(
-            children: [
-              const Text('New to Resala?',
+            const SizedBox(height: small_padding),
 
-                softWrap: true,
-                style: TextStyle(
-                    fontSize: medium_font_size,
-                    fontFamily: 'IBM',
-                    fontWeight: FontWeight.w500
-                ),),
+            Wrap(
+              children: [
 
-
-
-              TextButton(
-                onPressed: (){
-                  const Register();
-                },
-                child: const Text('Sign up for free',
+                const Text(
+                  'New to Resala?',
                   softWrap: true,
                   style: TextStyle(
-                    fontSize: medium_font_size,
-                    color: mainBlue,
-                    fontFamily: 'IBM',
-                    fontWeight: FontWeight.w500,
-
-                  ),),
-              ),
-            ],
-          ),
-
-
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color:  mainBlue,
-              ),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Email Address',
-                  hintStyle: TextStyle(
-                    fontFamily: 'IBM',
+                      fontSize: medium_font_size,
+                      fontFamily: 'IBM',
+                      fontWeight: FontWeight.w500),
+                ),
+                TextButton(
+                  onPressed: () {
+                    const Register();
+                  },
+                  child: const Text(
+                    'Sign up for free',
+                    softWrap: true,
+                    style: TextStyle(
+                      fontSize: medium_font_size,
+                      color: mainBlue,
+                      fontFamily: 'IBM',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ),
-
-          Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: mainBlue,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: mainBlue,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 2),
-                  child: TextField(
-                    obscureText: ishidden,
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Password',
-                      hintStyle: TextStyle(
-                        fontFamily: 'IBM',
-                      ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 2),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Email Address',
+                    hintStyle: TextStyle(
+                      fontFamily: 'IBM',
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                right: 26,
-                top: 17,
-                child: InkWell(
-                  onTap: (){
-                    setState(() {
-                      ishidden = !ishidden;
-                    });
-                  },
-                  child: Image.asset(ishidden? 'assets/images/hidden.png':'assets/images/view.png',
-                    scale: 25,
+            ),
+            Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: mainBlue,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 2),
+                    child: TextField(
+                      obscureText: ishidden,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Password',
+                        hintStyle: TextStyle(
+                          fontFamily: 'IBM',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 26,
+                  top: 17,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        ishidden = !ishidden;
+                      });
+                    },
+                    child: Image.asset(
+                      ishidden
+                          ? 'assets/images/hidden.png'
+                          : 'assets/images/view.png',
+                      scale: 25,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Forgot Password?',
+                  style: TextStyle(
+                    fontSize: medium_font_size,
+                    fontFamily: 'IBM',
+                    fontWeight: FontWeight.w500,
+                    color: mainRed,
                   ),
                 ),
               ),
-            ],
-          ),
-
-
-          Center(
-            child: TextButton(
-              onPressed: (){},
-              child: const Text('Forgot Password?',
-                style: TextStyle(
-                  fontSize: medium_font_size,
-                  fontFamily: 'IBM',
-                  fontWeight: FontWeight.w500,
-                  color: mainRed,
-                ),),
             ),
-          ),
-
-    Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-
-        const SizedBox(width: medium_padding*2),
-
-        const Text ('Loging in as:   ',
-        style: TextStyle(
-          fontSize: medium_font_size,
-          color: mainBlue,
-        ),
-        ),
-
-        DropdownButton<String>(
-          value: userTypeDropdownValue,
-          icon: const Icon(Icons.keyboard_arrow_down_outlined),
-          elevation: 16,
-          style: const TextStyle(color: Colors.black54),
-          underline: Container(
-            height: 1,
-            color: mainBlue,
-          ),
-          onChanged: (String? value) {
-            //return selected userType
-            setState(() {
-              userTypeDropdownValue = value!;
-            });
-          },
-          items: userTypes.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value,),
-
-            );
-          }).toList(),
-        ),
-      ],
-    ),
-
-
-      ButtonWidget(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Loging in as: ',
+                  style: TextStyle(
+                    fontSize: small_font_size*1.5,
+                    color: mainBlue,
+                  ),
+                ),
+                DropdownButton<String>(
+                  value: userTypeDropdownValue,
+                  icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black54),
+                  underline: Container(
+                    height: 1,
+                    color: mainBlue,
+                  ),
+                  onChanged: (String? value) {
+                    //return selected userType
+                    setState(() {
+                      userTypeDropdownValue = value!;
+                    });
+                  },
+                  items: userTypes.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value,
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+            ButtonWidget(
               text: 'Login',
               onClicked: () {
-                  if (userTypeDropdownValue == 'Donator')
-                  {
-                  print ('logged in as Donator');
+                if (userTypeDropdownValue == 'Donator') {
+                  print('logged in as Donator');
 
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DonationScreen()));
-                  }
-                else if (userTypeDropdownValue == 'Employee')
-                  {
-                    print ('logged in as Employee');
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EmployeeDashboardScreen()));
-                  }
-                else
-                  {
-                    print ('logged in as Admin');
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdminDashboardScreen()));
-                   }
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const DonationScreen()));
+                } else if (userTypeDropdownValue == 'Employee') {
+                  print('logged in as Employee');
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => EmployeeDashboardScreen(
+                            employee: sampleEmployee1,
+                          )));
+                } else {
+                  print('logged in as Admin');
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => AdminDashboardScreen()));
+                }
               },
-
-          ),
-
-      SizedBox(height: screenHeight*0.0675,),
-        ],
+            ),
+            SizedBox(
+              height: screenHeight * 0.0675,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
@@ -8,7 +9,9 @@ import 'package:storage_management_system/ui/frequently_used_widgets/employee_ca
 import 'frequently_used_widgets/item_card_widget.dart';
 
 class EmployeeDashboardScreen extends StatefulWidget {
-  const EmployeeDashboardScreen({super.key});
+  final Employee employee;
+  const EmployeeDashboardScreen({Key? key, required this.employee})
+      : super(key: key);
 
   @override
   State<EmployeeDashboardScreen> createState() =>
@@ -16,16 +19,16 @@ class EmployeeDashboardScreen extends StatefulWidget {
 }
 
 class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
-  Employee sampleEmployee = sampleEmployee1;
 
   @override
   Widget build(BuildContext context) {
+    int cardNum = 0;
+
     return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: mainBlue,
           leading: IconButton(
-
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
@@ -35,61 +38,41 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
         ),
         body: ListView(
           scrollDirection: Axis.vertical,
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: medium_padding),
           children: <Widget>[
             const SizedBox(height: small_padding),
             EmployeeCardWidget(
-              employee: sampleEmployee1,
+              employee: widget.employee,
               onClicked: () {},
             ),
+            const SizedBox(height: large_padding),
 
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
+
+                const SizedBox(height: medium_padding),
+
+                //the for loop below is a stupid solution to view all cards for all categories assign to this.employee
+                //cause the stupid GridView wouldn't work
+                //I'm basically dividing categories cards into rows, each rows can take up to 3 cards.
+                // so, two nested for loops, first one for rows, second one for columns (for cards in each row)
+
+                for (int rowNum = 0 ; rowNum <  (widget.employee.assignedCategories!.length).toInt(); rowNum++)
+                  Row(
                     children: [
-                      const SizedBox(height: large_padding),
-                      ItemCardWidget(
-                        onClicked: () {},
-                        donatedItemCategory: electronics,
-                        iconName: Icons.devices_outlined,
-                      ),
-                      const SizedBox(height: large_padding),
-
-                      ItemCardWidget(
-                        onClicked: () {},
-                        donatedItemCategory: clothes,
-                        iconName: Icons.man_outlined,
-                      ),
+                      for (int colNum = 0 ; colNum < 3 && cardNum < widget.employee.assignedCategories!.length; colNum ++,cardNum++)
+                        Padding(
+                          padding: const EdgeInsets.all(small_padding),
+                          child: ItemCardWidget(
+                              onClicked: () {},
+                              donatedItemCategory: widget.employee.assignedCategories!.elementAt(cardNum)),
+                        ),
                     ],
                   ),
-                  const SizedBox(width: large_padding),
 
-                  Column(
-                    children: [
-                      const SizedBox(height: large_padding),
-                      ItemCardWidget(
-                        onClicked: () {},
-                        donatedItemCategory: books,
-                        iconName: Icons.menu_book_outlined,
-
-                      ),
-                      const SizedBox(height: large_padding),
-
-                      ItemCardWidget(
-                        onClicked: () {},
-                        donatedItemCategory: furniture,
-                        iconName: Icons.chair_outlined,
-
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                 ],
             ),
 
-          ],
-        ));
+    );
+
+
   }
 }

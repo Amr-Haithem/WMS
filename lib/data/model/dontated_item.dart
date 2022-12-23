@@ -5,7 +5,8 @@ class DonatedItem{
   DonatedItemCategory? category;
   String? donatorID;
   DateTime? donationDate;
-  String? itemSize;   //item size in meter squared
+  String? itemSize;
+   //item size in meter squared
 
   DonatedItem({
     this.id,

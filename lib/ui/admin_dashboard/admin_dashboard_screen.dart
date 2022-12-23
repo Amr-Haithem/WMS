@@ -3,6 +3,8 @@ import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/data/model/category.dart';
 import 'package:storage_management_system/data/model/employee.dart';
+import 'package:storage_management_system/ui/admin_dashboard/employeesTab.dart';
+import 'package:storage_management_system/ui/admin_dashboard/storageCenterTab.dart';
 import 'package:storage_management_system/ui/frequently_used_widgets/employee_card_widget.dart';
 
 import '../frequently_used_widgets/item_card_widget.dart';
@@ -16,7 +18,6 @@ class AdminDashboardScreen extends StatefulWidget {
 }
 
 class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
-  Employee sampleEmployee = sampleEmployee1;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,9 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                   body:  TabBarView(
                     children: [
 
-                      // Login(),
+                      StorageCenterTab(),
+                      EmployeesTab(),
+
                       // Register(),
 
                     ],

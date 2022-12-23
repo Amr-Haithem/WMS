@@ -71,6 +71,10 @@ flutter:
     - assets/images/resala.jpeg
     - assets/images/Mohamed.png
     - assets/images/Mohamed2.png
+    - assets/images/Amr.png
+    - assets/images/Adham.png
+    - assets/images/Abdelraouf.png
+    - assets/images/Osama.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

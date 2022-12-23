@@ -6,16 +6,21 @@ import 'package:storage_management_system/data/model/employee.dart';
 import '../../constants/project_colors.dart';
 
 
-class EmployeeCardWidget extends StatelessWidget {
+class EmployeeCardInAdminDashboard extends StatefulWidget {
   final Employee employee;
   final VoidCallback onClicked;
 
-  const EmployeeCardWidget({
+  const EmployeeCardInAdminDashboard({
     Key? key,
     required this.employee,
     required this.onClicked,
   }) : super(key: key);
 
+  @override
+  State<EmployeeCardInAdminDashboard> createState() => _EmployeeCardInAdminDashboardState();
+}
+
+class _EmployeeCardInAdminDashboardState extends State<EmployeeCardInAdminDashboard> {
   @override
   Widget build(BuildContext context) =>
       Stack
@@ -69,18 +74,19 @@ class EmployeeCardWidget extends StatelessWidget {
                                   [
 
 
-                                     Text('${employee.name}', style: const TextStyle(
+                                     Text('${widget.employee.name}', style: const TextStyle(
                                         color: mainBlue,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'IBM',
                                          fontSize: medium_font_size),
                                      ),
-                                   const SizedBox(height: medium_padding),
+                                   const SizedBox(height: small_padding),
 
-                                    Text('Branch: ${employee.assignedStorageCenter?.name}', style: const TextStyle(
-                                        color: mainBlue,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'IBM')),
+                                    Text('ID: ${widget.employee.id}',
+                                        style: const TextStyle(
+                                            color: mainBlue,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'IBM')),
                                     const SizedBox(height: small_padding),
 
 
@@ -91,38 +97,31 @@ class EmployeeCardWidget extends StatelessWidget {
                                       children: <Widget>
                                       [
 
-                                        RatingBarIndicator(
-                                          rating: employee.rank,
+
+                                        //Rating bar
+                                        RatingBar.builder(
+                                          initialRating: widget.employee.rank,
+                                          minRating: 1,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
                                           itemCount: 5,
-                                          itemSize: 30.0,
-                                          physics: const BouncingScrollPhysics(),
-                                          itemBuilder: (context, _) =>
+                                          itemPadding: const EdgeInsets.symmetric(
+                                              horizontal: 4.0),
+                                          itemBuilder: (context, rating) =>
                                           const Icon(
                                             Icons.star,
                                             color: Colors.amber,
                                           ),
-                                        ),
+                                          onRatingUpdate: (rating) {
+                                            print(rating);
+                                            setState(() {
+                                              widget.employee.rank=rating;
+                                            });
 
-                                        //Rating bar
-                                        // RatingBar.builder(
-                                        //   initialRating: 3,
-                                        //   minRating: 1,
-                                        //   direction: Axis.horizontal,
-                                        //   allowHalfRating: true,
-                                        //   itemCount: 5,
-                                        //   itemPadding: const EdgeInsets.symmetric(
-                                        //       horizontal: 4.0),
-                                        //   itemBuilder: (context, rating) =>
-                                        //   const Icon(
-                                        //     Icons.star,
-                                        //     color: Colors.amber,
-                                        //   ),
-                                        //   onRatingUpdate: (rating) {
-                                        //     print(rating);
-                                        //   },
-                                        //
-                                        // ),
-                                         Text('${this.employee.rank}', style: const TextStyle(
+                                          },
+
+                                        ),
+                                         Text('${this.widget.employee.rank}', style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w700,
                                             fontSize: large_font_size)),
@@ -141,30 +140,12 @@ class EmployeeCardWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-          CircleAvatar(
-            backgroundColor: Colors.transparent,
-            radius: 100,
-            child:Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          opacity: 0.75,
-                          image: AssetImage("assets/images/Resala.jpeg"),
-                          // fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-          ),
-                    // CircleAvatar(
-                    //   backgroundColor: Colors.greenAccent[400],
-                    //   radius: 100,
-                    //   child: Image.asset("assets/images/Resala.jpeg", ),
-                    // ),
 
 
                     /// Item image
                     Align
                       (
-                      alignment: Alignment.topRight,
+                      alignment: Alignment.centerRight,
                       child: Padding
                         (
                         padding: const EdgeInsets.only(
@@ -172,19 +153,11 @@ class EmployeeCardWidget extends StatelessWidget {
                         child: SizedBox.fromSize
                           (
                           size: const Size.fromRadius(54.0),
-                          child:   const CircleAvatar(
+                          child:    CircleAvatar(
                             foregroundColor: Colors.red,
-                            backgroundImage: AssetImage("assets/images/Mohamed2.png"),
+                            backgroundImage: AssetImage(widget.employee.profilePicUrl),
                           ),
 
-                          // Material
-                          //   (
-                          //   elevation: small_padding,
-                          //   shadowColor: mainBlue,
-                          //   borderRadius: BorderRadius.
-                          //   shape:  const CircleBorder(side: BorderSide( )),
-                          //   child: Image.asset('assets/images/Mohamed2.png'),
-                          // ),
                         ),
                       ),
                     ),

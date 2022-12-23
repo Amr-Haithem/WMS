@@ -7,6 +7,7 @@ import '../../constants/project_colors.dart';
 class ButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
+
   const ButtonWidget({
     Key? key,
     required this.text,
