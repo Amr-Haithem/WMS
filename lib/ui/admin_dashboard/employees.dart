@@ -5,17 +5,17 @@ import 'package:storage_management_system/data/model/category.dart';
 import 'package:storage_management_system/data/model/employee.dart';
 import 'package:storage_management_system/ui/frequently_used_widgets/employee_card_widget.dart';
 
-import 'frequently_used_widgets/item_card_widget.dart';
+import '../frequently_used_widgets/item_card_widget.dart';
 
-class EmployeeDashboardScreen extends StatefulWidget {
-  const EmployeeDashboardScreen({super.key});
+class EmployeesTab extends StatefulWidget {
+  const EmployeesTab({super.key});
 
   @override
-  State<EmployeeDashboardScreen> createState() =>
-      _EmployeeDashboardScreenState();
+  State<EmployeesTab> createState() =>
+      _EmployeesTabState();
 }
 
-class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
+class _EmployeesTabState extends State<EmployeesTab> {
   Employee sampleEmployee = sampleEmployee1;
 
   @override
@@ -31,7 +31,7 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
           ),
           title: const Text('Dashboard',
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+              TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
         ),
         body: ListView(
           scrollDirection: Axis.vertical,

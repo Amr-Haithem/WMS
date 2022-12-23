@@ -47,7 +47,7 @@ class EmployeeCardWidget extends StatelessWidget {
                         color: Colors.white,
                         child: InkWell
                           (
-                          //  onTap: () {},
+                        //  onTap: () {},
                           child: Padding
                             (
                             padding: const EdgeInsets.all(medium_padding),
@@ -69,29 +69,25 @@ class EmployeeCardWidget extends StatelessWidget {
                                   [
 
 
-                                    Text('${employee.name}',
-                                      style: const TextStyle(
-                                          color: mainBlue,
-                                          fontWeight: FontWeight.w700,
-                                          fontFamily: 'IBM',
-                                          fontSize: medium_font_size),
-                                    ),
-                                    const SizedBox(height: medium_padding),
+                                     Text('${employee.name}', style: const TextStyle(
+                                        color: mainBlue,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: 'IBM',
+                                         fontSize: medium_font_size),
+                                     ),
+                                   const SizedBox(height: medium_padding),
 
-                                    Text('ID: ${employee.id}',
-                                        style: const TextStyle(
-                                            color: mainBlue,
-                                            fontWeight: FontWeight.w700,
-                                            fontFamily: 'IBM')),
+                                    Text('Branch: ${employee.assignedStorageCenter?.name}', style: const TextStyle(
+                                        color: mainBlue,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: 'IBM')),
                                     const SizedBox(height: small_padding),
 
 
                                     Row
                                       (
-                                      mainAxisAlignment: MainAxisAlignment
-                                          .start,
-                                      crossAxisAlignment: CrossAxisAlignment
-                                          .center,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: <Widget>
                                       [
 
@@ -126,11 +122,10 @@ class EmployeeCardWidget extends StatelessWidget {
                                         //   },
                                         //
                                         // ),
-                                        Text('${this.employee.rank}',
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: large_font_size)),
+                                         Text('${this.employee.rank}', style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: large_font_size)),
                                         // const Icon(
                                         //     Icons.star, color: Colors.black,
                                         //     size: medium_padding),
@@ -146,19 +141,19 @@ class EmployeeCardWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      radius: 100,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            opacity: 0.75,
-                            image: AssetImage("assets/images/Resala.jpeg"),
-                            // fit: BoxFit.cover,
-                          ),
+          CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 100,
+            child:Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          opacity: 0.75,
+                          image: AssetImage("assets/images/Resala.jpeg"),
+                          // fit: BoxFit.cover,
                         ),
                       ),
                     ),
+          ),
                     // CircleAvatar(
                     //   backgroundColor: Colors.greenAccent[400],
                     //   radius: 100,
@@ -177,10 +172,9 @@ class EmployeeCardWidget extends StatelessWidget {
                         child: SizedBox.fromSize
                           (
                           size: const Size.fromRadius(54.0),
-                          child: const CircleAvatar(
+                          child:   const CircleAvatar(
                             foregroundColor: Colors.red,
-                            backgroundImage: AssetImage(
-                                "assets/images/Mohamed2.png"),
+                            backgroundImage: AssetImage("assets/images/Mohamed2.png"),
                           ),
 
                           // Material
@@ -204,5 +198,4 @@ class EmployeeCardWidget extends StatelessWidget {
           /// Review
         ],
       );
-
 }

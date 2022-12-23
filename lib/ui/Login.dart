@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
+import 'package:storage_management_system/ui/admin_dashboard/admin_dashboard_screen.dart';
 import 'package:storage_management_system/ui/frequently_used_widgets/button_widget.dart';
 
 import 'Donation_screen.dart';
@@ -195,7 +196,7 @@ class _LoginState extends State<Login> {
                 else
                   {
                     print ('logged in as Admin');
-                  //Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdminScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdminDashboardScreen()));
                    }
               },
 

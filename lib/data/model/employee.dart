@@ -13,8 +13,7 @@ Employee(
     {
   this.name,
   this.id,
-  required this.rank,
-  this.assignedCategories,
+  required this.rank, this.assignedCategories,
   this.assignedStorageCenter
 
   }
@@ -33,10 +32,3 @@ Employee sampleEmployee4= Employee(name: 'Mohamed', id: '19P4321', assignedStora
 List <Employee> employees = [sampleEmployee1, sampleEmployee2, sampleEmployee3, sampleEmployee4 ];
 
 
-
-// //sample employees
-// Employee employee1= Employee(name: 'Mohamed', id: '19P7975', assignedBranch: nasrCity,     assignedCategories: [employee1.assignedBranch?.categories?[0],employee1.assignedBranch?.categories?[1], employee1.assignedBranch?.categories?[2], employee1.assignedBranch?.categories?[3]]);
-// Employee employee2= Employee(name: 'Amr',     id: '19P1234', assignedBranch: maadi,        assignedCategories: [employee2.assignedBranch?.categories?[0],employee2.assignedBranch?.categories?[1], employee2.assignedBranch?.categories?[2], employee2.assignedBranch?.categories?[3]]);
-// Employee employee3= Employee(name: 'Adham',   id: '19P5678', assignedBranch: giza,         assignedCategories: [employee2.assignedBranch?.categories?[0],employee2.assignedBranch?.categories?[1], employee2.assignedBranch?.categories?[2], employee3.assignedBranch?.categories?[3]]);
-// Employee employee4= Employee(name: 'Mohamed', id: '19P4321', assignedBranch: mohandseen,   assignedCategories: [employee2.assignedBranch?.categories?[0],employee2.assignedBranch?.categories?[1], employee2.assignedBranch?.categories?[2], employee4.assignedBranch?.categories?[3]]);
-//

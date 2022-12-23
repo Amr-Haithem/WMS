@@ -5,7 +5,7 @@ import 'package:storage_management_system/data/model/category.dart';
 import 'package:storage_management_system/data/model/employee.dart';
 import 'package:storage_management_system/ui/frequently_used_widgets/employee_card_widget.dart';
 
-import 'frequently_used_widgets/item_card_widget.dart';
+import '../frequently_used_widgets/item_card_widget.dart';
 
 class EmployeeDashboardScreen extends StatefulWidget {
   const EmployeeDashboardScreen({super.key});
@@ -31,17 +31,13 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
           ),
           title: const Text('Dashboard',
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+              TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
         ),
         body: ListView(
           scrollDirection: Axis.vertical,
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: <Widget>[
             const SizedBox(height: small_padding),
-            EmployeeCardWidget(
-              employee: sampleEmployee1,
-              onClicked: () {},
-            ),
 
             Center(
               child: Row(
