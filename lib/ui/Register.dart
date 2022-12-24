@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 
-import 'Donation_screen.dart';
-import 'frequently_used_widgets/button_widget.dart';
+import 'DonationScreen.dart';
+import 'frequently_used_widgets/ButtonWidget.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});

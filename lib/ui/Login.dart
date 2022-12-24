@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
-import 'package:storage_management_system/ui/admin_dashboard/admin_dashboard_screen.dart';
-import 'package:storage_management_system/ui/frequently_used_widgets/button_widget.dart';
+import 'package:storage_management_system/ui/admin_dashboard/AdminDashboardScreen.dart';
+import 'package:storage_management_system/ui/frequently_used_widgets/ButtonWidget.dart';
 
 import '../data/model/employee.dart';
-import 'Donation_screen.dart';
-import 'Employee_screen.dart';
+import 'DonationScreen.dart';
+import 'EmployeeScreen.dart';
 import 'Register.dart';
 
 const List<String> userTypes = <String>['Donator', 'Employee', 'Admin'];
