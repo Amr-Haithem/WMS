@@ -36,40 +36,44 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
         ),
-        body: ListView(
-          scrollDirection: Axis.vertical,
-          padding: const EdgeInsets.symmetric(horizontal: medium_padding),
-          children: <Widget>[
-            const SizedBox(height: small_padding),
-            EmployeeCardWidget(
-              employee: widget.employee,
-              onClicked: () {},
-            ),
-            const SizedBox(height: large_padding),
+        body: Wrap(
+            runAlignment: WrapAlignment.center,
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              const SizedBox(height: small_padding),
+
+              EmployeeCardWidget(
+                employee: widget.employee,
+                onClicked: () {},
+              ),
+              const SizedBox(height: large_padding),
 
 
-                const SizedBox(height: medium_padding),
+                  const SizedBox(height: medium_padding),
 
-                //the for loop below is a stupid solution to view all cards for all categories assign to this.employee
-                //cause the stupid GridView wouldn't work
-                //I'm basically dividing categories cards into rows, each rows can take up to 3 cards.
-                // so, two nested for loops, first one for rows, second one for columns (for cards in each row)
+                  //the for loop below is a stupid solution to view all cards for all categories assign to this.employee
+                  //cause the stupid GridView wouldn't work
+                  //I'm basically dividing categories cards into rows, each rows can take up to 3 cards.
+                  // so, two nested for loops, first one for rows, second one for columns (for cards in each row)
 
-                for (int rowNum = 0 ; rowNum <  (widget.employee.assignedCategories!.length).toInt(); rowNum++)
-                  Row(
-                    children: [
-                      for (int colNum = 0 ; colNum < 3 && cardNum < widget.employee.assignedCategories!.length; colNum ++,cardNum++)
-                        Padding(
-                          padding: const EdgeInsets.all(small_padding),
-                          child: ItemCardWidget(
-                              onClicked: () {},
-                              donatedItemCategory: widget.employee.assignedCategories!.elementAt(cardNum)),
-                        ),
-                    ],
-                  ),
+                  for (int rowNum = 0 ; rowNum <  (widget.employee.assignedCategories!.length).toInt(); rowNum++)
+                    Wrap(
+                      direction: Axis.vertical,
+                      runSpacing: small_padding,
+                      children: [
+                        for (int colNum = 0 ; colNum < 1 && cardNum < widget.employee.assignedCategories!.length; colNum ++,cardNum++)
+                          Padding(
+                            padding: const EdgeInsets.all(small_padding),
+                            child: ItemCardWidget(
+                                onClicked: () {},
+                                donatedItemCategory: widget.employee.assignedCategories!.elementAt(cardNum)),
+                          ),
+                      ],
+                    ),
 
-                 ],
-            ),
+                   ],
+
+        ),
 
     );
 
