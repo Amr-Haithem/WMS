@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
 
-import '../constants/project_colors.dart';
+import '../../constants/project_colors.dart';
 
 
 class ButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
+
   const ButtonWidget({
     Key? key,
     required this.text,

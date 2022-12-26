@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   sqflite: ^2.2.0+2
   path: ^1.8.2
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,13 @@ flutter:
     - assets/images/view.png
     - assets/images/Resala.jpeg
     - assets/images/resala.jpeg
+    - assets/images/Mohamed.png
+    - assets/images/Mohamed2.png
+    - assets/images/Amr.png
+    - assets/images/Adham.png
+    - assets/images/Abdelraouf.png
+    - assets/images/Osama.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
