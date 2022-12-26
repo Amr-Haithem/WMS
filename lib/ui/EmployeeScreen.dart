@@ -37,7 +37,7 @@ class _EmployeeDashboardScreenState extends State<EmployeeDashboardScreen> {
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
         ),
         body: Wrap(
-runAlignment: WrapAlignment.center,
+            runAlignment: WrapAlignment.center,
             alignment: WrapAlignment.center,
             children: <Widget>[
               const SizedBox(height: small_padding),
@@ -61,7 +61,7 @@ runAlignment: WrapAlignment.center,
                       direction: Axis.vertical,
                       runSpacing: small_padding,
                       children: [
-                        for (int colNum = 0 ; colNum < 2 && cardNum < widget.employee.assignedCategories!.length; colNum ++,cardNum++)
+                        for (int colNum = 0 ; colNum < 1 && cardNum < widget.employee.assignedCategories!.length; colNum ++,cardNum++)
                           Padding(
                             padding: const EdgeInsets.all(small_padding),
                             child: ItemCardWidget(
