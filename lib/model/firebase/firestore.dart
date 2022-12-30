@@ -23,7 +23,6 @@ class FireStore {
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getCategoriesFromDB() {
-    return firestore.collection("categories").get();
+    return firestore.collection("Categories").get();
   }
 }
- 

@@ -5,7 +5,7 @@ import '../../model/model/category.dart';
 import '../frequently_used_widgets/ItemCardWidget.dart';
 
 class StorageCenterTab extends StatefulWidget {
-  const StorageCenterTab({super.key,required this.categories});
+  const StorageCenterTab({super.key, required this.categories});
   final List<Category> categories;
 
   @override
@@ -14,7 +14,6 @@ class StorageCenterTab extends StatefulWidget {
 
 class _StorageCenterTabState extends State<StorageCenterTab> {
   // Employee sampleEmployee = sampleEmployee1;
-  int cardNum = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +21,10 @@ class _StorageCenterTabState extends State<StorageCenterTab> {
       widget.categories.length,
       (index) => ItemCardWidget(
         onClicked: () {},
-        category: widget.categories.elementAt(cardNum),
+        category: widget.categories.elementAt(index),
       ),
     );
+    print(categoriesCards);
     return Scaffold(
       body:
 
@@ -36,32 +36,21 @@ class _StorageCenterTabState extends State<StorageCenterTab> {
           //  for (int rowNum = 0 ; rowNum <  (categories.length).toInt(); rowNum++)
 
           Wrap(
-        runAlignment: WrapAlignment.center,
-        alignment: WrapAlignment.center,
-        //  direction: Axis.horizontal,
+        runAlignment: WrapAlignment.start,
+        alignment: WrapAlignment.start,
+        direction: Axis.vertical,
+        runSpacing: 5,
         //   crossAxisAlignment: WrapCrossAlignment.end,
         //    alignment: WrapAlignment.center,
         //  verticalDirection: VerticalDirection.down,
         //  runSpacing: small_padding,
         children: [
-          for (int rowNum = 0; rowNum < (widget.categories.length).toInt(); rowNum++)
-            Wrap(
-              direction: Axis.vertical,
-              alignment: WrapAlignment.center,
-              runAlignment: WrapAlignment.center,
+          Wrap(
+              direction: Axis.horizontal,
+              alignment: WrapAlignment.start,
+              runAlignment: WrapAlignment.start,
               runSpacing: small_padding,
-              children: [
-                for (int colNum = 0;
-                    colNum < 1 && cardNum < widget.categories.length;
-                    colNum++, cardNum++)
-                  Padding(
-                    padding: EdgeInsets.all(small_padding),
-                    child: ItemCardWidget(
-                        onClicked: () {},
-                        category: widget.categories.elementAt(cardNum)),
-                  ),
-              ],
-            ),
+              children: categoriesCards),
           // categoriesCards,
         ],
       ),

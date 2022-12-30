@@ -20,11 +20,6 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    print(Icons.man_outlined.codePoint);
-    print(Icons.devices_outlined.codePoint);
-    print(Icons.chair_outlined.codePoint);
-    print(Icons.menu_book_outlined.codePoint);
-    print(Icons.card_giftcard_outlined.codePoint);
     return MaterialApp(
         title: 'Storage Management System',
         debugShowCheckedModeBanner: false,

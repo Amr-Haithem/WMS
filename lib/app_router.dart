@@ -28,7 +28,8 @@ class AppRouter {
         );
       case adminDashBoardScreenUrl:
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
+          builder: (context) => BlocProvider(
+            lazy: false,
             create: (context) => CategoriesCubit(),
             child: AdminDashboardScreen(),
           ),

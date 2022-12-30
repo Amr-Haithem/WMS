@@ -12,8 +12,12 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     emit(CategoriesLoading());
     try {
       List<Category> categories = await fireStoreRepo.getCategoriesFromDB();
+
+      print("naaaaaaaaaw");
+      print(categories);
       emit(CategoriesLoaded(categories: categories));
     } catch (e) {
+      print(e);
       emit(CategoriesError());
     }
   }
