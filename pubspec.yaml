@@ -39,6 +39,13 @@ dependencies:
   sqflite: ^2.2.0+2
   path: ^1.8.2
   flutter_rating_bar: ^4.0.1
+  firebase_core: ^2.4.0
+  firebase_auth: ^4.2.3
+  flutter_bloc: ^8.1.1
+  bloc: ^8.1.0
+  firebase_database: ^10.0.9
+  cloud_firestore: ^4.3.1
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

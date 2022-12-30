@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "803004900550",
+    "firebase_url": "https://jogpeer-c7aba-default-rtdb.firebaseio.com",
+    "project_id": "jogpeer-c7aba",
+    "storage_bucket": "jogpeer-c7aba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803004900550:android:84fb6b79b53656eb3923c7",
+        "android_client_info": {
+          "package_name": "com.example.storage_management_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803004900550-hqguqvea1ono7ic39s2lb312ggfklvsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhg4gL0jqsX4D-7hJyUlVCistdn993BEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803004900550-hqguqvea1ono7ic39s2lb312ggfklvsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

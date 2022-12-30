@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/constants/project_measures.dart';
-import 'package:storage_management_system/ui/frequently_used_widgets/ButtonWidget.dart';
+import 'package:storage_management_system/view/frequently_used_widgets/ButtonWidget.dart';
 
 const List<String> donatedItemCategories = <String>['clothes', 'electronics', 'paper', 'furniture', 'other'];
 const List<String> areas = <String>['Nasr City', 'Maadi', '6 October', 'Giza', 'Haram'];

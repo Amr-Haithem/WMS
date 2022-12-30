@@ -1,27 +1,36 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:storage_management_system/app_router.dart';
+import 'package:storage_management_system/controller/authentication/authentication_cubit.dart';
+import 'package:storage_management_system/view/wrapper.dart';
 
-import 'ui/TabBarScreen.dart';
+import 'firebase_options.dart';
 
-import 'package:storage_management_system/ui/TabBarScreen.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-
-void main() {
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+  final AppRouter appRouter = AppRouter();
+  MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    print(Icons.man_outlined.codePoint);
+    print(Icons.devices_outlined.codePoint);
+    print(Icons.chair_outlined.codePoint);
+    print(Icons.menu_book_outlined.codePoint);
+    print(Icons.card_giftcard_outlined.codePoint);
     return MaterialApp(
-      title: 'Storage Management System',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
-      home: const TabBarScreen(),
-    );
+        title: 'Storage Management System',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.grey,
+        ),
+        onGenerateRoute: appRouter.generateRoute);
   }
 }
