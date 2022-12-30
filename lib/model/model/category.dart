@@ -4,11 +4,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class Category {
+  final int id;
   final IconData iconName;
   final String name;
   final int busyRoom;
   final int totalRoom; //space available for more of
   Category({
+    required this.id,
     required this.iconName,
     required this.name,
     required this.busyRoom,
@@ -16,12 +18,14 @@ class Category {
   });
 
   Category copyWith({
+    int? id,
     IconData? iconName,
     String? name,
     int? busyRoom,
     int? totalRoom,
   }) {
     return Category(
+      id: id ?? this.id,
       iconName: iconName ?? this.iconName,
       name: name ?? this.name,
       busyRoom: busyRoom ?? this.busyRoom,
@@ -31,6 +35,7 @@ class Category {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'iconName': iconName.codePoint,
       'name': name,
       'busyRoom': busyRoom,
@@ -40,6 +45,7 @@ class Category {
 
   factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
+      id: map['id'] as int,
       iconName: IconData(map['iconName'] as int, fontFamily: 'MaterialIcons'),
       name: map['name'] as String,
       busyRoom: map['busyRoom'] as int,
@@ -49,30 +55,32 @@ class Category {
 
   String toJson() => json.encode(toMap());
 
-  factory Category.fromJson(String source) => Category.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Category.fromJson(String source) =>
+      Category.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Category(iconName: $iconName, name: $name, busyRoom: $busyRoom, totalRoom: $totalRoom)';
+    return 'Category(id: $id, iconName: $iconName, name: $name, busyRoom: $busyRoom, totalRoom: $totalRoom)';
   }
 
   @override
   bool operator ==(covariant Category other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.iconName == iconName &&
-      other.name == name &&
-      other.busyRoom == busyRoom &&
-      other.totalRoom == totalRoom;
+
+    return other.id == id &&
+        other.iconName == iconName &&
+        other.name == name &&
+        other.busyRoom == busyRoom &&
+        other.totalRoom == totalRoom;
   }
 
   @override
   int get hashCode {
-    return iconName.hashCode ^
-      name.hashCode ^
-      busyRoom.hashCode ^
-      totalRoom.hashCode;
+    return id.hashCode ^
+        iconName.hashCode ^
+        name.hashCode ^
+        busyRoom.hashCode ^
+        totalRoom.hashCode;
   }
 }
 

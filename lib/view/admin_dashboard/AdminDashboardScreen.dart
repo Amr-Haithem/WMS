@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
-import 'package:storage_management_system/controller/categories/categories_cubit.dart';
+import 'package:storage_management_system/controller/categories/categories_edit/edit_categories_cubit.dart';
 import 'package:storage_management_system/view/admin_dashboard/StorageCenterTab.dart';
+
+import '../../controller/categories/categories/categories_cubit.dart';
 
 class AdminDashboardScreen extends StatefulWidget {
   const AdminDashboardScreen({super.key});
@@ -69,10 +71,27 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 body: TabBarView(
                   children: [
                     BlocBuilder<CategoriesCubit, CategoriesState>(
-                      builder: (context, state) {
-                        if (state is CategoriesLoaded) {
-                          return StorageCenterTab(categories: state.categories);
-                        } else if (state is CategoriesError) {
+                      builder: (context, parentState) {
+                        if (parentState is CategoriesLoaded) {
+                          return BlocListener<EditCategoriesCubit,
+                                  EditCategoriesState>(
+                              listener: (context, state) {
+                                if (state is EditedCategories) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text('Edited Categories')));
+                                } else if (state is EditCategoriesError) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(
+                                              'Error editing categories')));
+                                }
+                              },
+                              child:
+                                  //didn't implement state
+                                  StorageCenterTab(
+                                      categories: parentState.categories));
+                        } else if (parentState is CategoriesError) {
                           return Center(
                             child: Text("error"),
                           );

@@ -41,4 +41,8 @@ class FireStoreRepo {
     }
     return categories;
   }
+
+  Future<void> setNewCategoryValues(int id, int newBusyRoom, int newTotalRoom) {
+    return fireStore.setNewCategoryValues(id, newBusyRoom, newTotalRoom);
+  }
 }

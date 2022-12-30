@@ -25,4 +25,11 @@ class FireStore {
   Future<QuerySnapshot<Map<String, dynamic>>> getCategoriesFromDB() {
     return firestore.collection("Categories").get();
   }
+
+  Future<void >setNewCategoryValues(int id, int newBusyRoom, int newTotalRoom) {
+    return firestore
+        .collection("Categories")
+        .doc(id.toString())
+        .update({"busyRoom": newBusyRoom, "totalRoom": newTotalRoom});
+  }
 }

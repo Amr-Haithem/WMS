@@ -4,16 +4,13 @@ import 'category.dart';
 import 'donator.dart';
 
 class Receipt {
-  final String id;
-  final Admin admin;
-  final Donator donator;
-  final DateTime donationDate;
-  final List<Map<Category, int>> categoryNameWithItemSize;
-  Receipt({
-    required this.id,
-    required this.admin,
-    required this.categoryNameWithItemSize,
-    required this.donator,
-    required this.donationDate,
-  });
+  //todo
+  // final String id;
+  // final String name;
+  // final String area;
+  // final DateTime donationDate;
+  // final String address;
+  // final Donator donator;
+  // final List<Map<Category, int>> categoryNameWithItemSize;
+
 }
