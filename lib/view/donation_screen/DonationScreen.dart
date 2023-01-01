@@ -42,7 +42,7 @@ class _DonationScreenState extends State<DonationScreen> {
   final ScrollController _scrollController = ScrollController();
 
   scrollToBottom() async {
-    WidgetsBinding.instance!.addPostFrameCallback(
+    WidgetsBinding.instance.addPostFrameCallback(
       (_) => _scrollController.jumpTo(
         _scrollController.position.maxScrollExtent,
       ),
@@ -63,156 +63,168 @@ class _DonationScreenState extends State<DonationScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return BlocListener<DonationCubit, DonationState>(
-      listener: (context, state) {
-        if (state is DonationAdded) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Donation added')));
-          Navigator.pop(context);
-        } else if (state is DonationError) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Error in contacting the database')));
-        }
-      },
-      child: SafeArea(
-        child: MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              leading: BackButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              backgroundColor: mainBlue,
-              title: const Text('Make a donation'),
-              centerTitle: true,
+    return SafeArea(
+      child: MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            leading: BackButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-            body: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  opacity: 0.1,
-                  image: AssetImage("assets/images/Resala.jpeg"),
-                  // fit: BoxFit.cover,
-                ),
+            backgroundColor: mainBlue,
+            title: const Text('Make a donation'),
+            centerTitle: true,
+          ),
+          body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                opacity: 0.1,
+                image: AssetImage("assets/images/Resala.jpeg"),
+                // fit: BoxFit.cover,
               ),
-              child: Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Center(
-                      child: Text(
-                        "Even your smallest gifts can make a huge impact.\n"
-                        "Thank you for your donations",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: mainBlue,
-                          fontSize: 15,
-                        ),
+            ),
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Center(
+                    child: Text(
+                      "Even your smallest gifts can make a huge impact.\n"
+                      "Thank you for your donations",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: mainBlue,
+                        fontSize: 15,
                       ),
                     ),
+                  ),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(width: 50),
-                        const Text('Area:   '),
-                        DropdownButton<String>(
-                          value: areaDropdownValue,
-                          icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                          elevation: 16,
-                          style: const TextStyle(color: Colors.black54),
-                          underline: Container(
-                            height: 1,
-                            color: underlineColor,
-                          ),
-                          onChanged: (String? value) {
-                            // This is called when the user selects an item.
-                            setState(() {
-                              areaDropdownValue = value!;
-                            });
-                          },
-                          items: areas
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                              ),
-                            );
-                          }).toList(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(width: 50),
+                      const Text('Area:   '),
+                      DropdownButton<String>(
+                        value: areaDropdownValue,
+                        icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.black54),
+                        underline: Container(
+                          height: 1,
+                          color: underlineColor,
                         ),
-                      ],
-                    ),
-
-                    //address
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: medium_padding * 2, vertical: 2),
-                      child: TextField(
-                        onChanged: (val) {
-                          address = val;
+                        onChanged: (String? value) {
+                          // This is called when the user selects an item.
+                          setState(() {
+                            areaDropdownValue = value!;
+                          });
                         },
-                        decoration: const InputDecoration(
-                          label: Text('Detailed address'),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: underlineColor),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.cyan),
-                          ),
+                        items:
+                            areas.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
+
+                  //address
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: medium_padding * 2, vertical: 2),
+                    child: TextField(
+                      onChanged: (val) {
+                        address = val;
+                      },
+                      decoration: const InputDecoration(
+                        label: Text('Detailed address'),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: underlineColor),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
                         ),
                       ),
                     ),
+                  ),
 
-                    BlocBuilder<CategoriesCubit, CategoriesState>(
-                      builder: (context, state) {
-                        if (state is CategoriesLoaded) {
-                          categories = state.categories;
-                          print(categories);
-                          print("categories begotten");
-                          return Column(
-                            children: List.generate(
-                                categories.length,
-                                (index) => DonationWidget(
-                                      onChanged: (isAdding) {
-                                        // print(categories[index].busyRoom);
-                                        // print(state.categories[index].busyRoom);
-                                        // print("meow");
-                                        isAdding
-                                            ? categories[index].busyRoom++
-                                            : categories[index].busyRoom--;
-                                      },
-                                      category: state.categories[index],
-                                    )),
-                          );
-                        } else if (state is CategoriesError) {
-                          return const Center(child: Text("Error"));
-                        } else {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                      },
-                    ),
+                  BlocBuilder<CategoriesCubit, CategoriesState>(
+                    builder: (context, state) {
+                      if (state is CategoriesLoaded) {
+                        categories = state.categories;
+                        print(categories);
+                        print("categories begotten");
+                        return Column(
+                          children: List.generate(
+                              categories.length,
+                              (index) => DonationWidget(
+                                    onChanged: (isAdding) {
+                                      // print(categories[index].busyRoom);
+                                      // print(state.categories[index].busyRoom);
+                                      // print("meow");
+                                      isAdding
+                                          ? categories[index].busyRoom++
+                                          : categories[index].busyRoom--;
+                                    },
+                                    category: state.categories[index],
+                                  )),
+                        );
+                      } else if (state is CategoriesError) {
+                        return const Center(child: Text("Error"));
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
 
-                    ButtonWidget(
-                      text: 'Submit',
-                      onClicked: () {
-                        print("whaaaat");
-                        if (categories != null && categories.isNotEmpty) {
-                          BlocProvider.of<DonationCubit>(context)
-                              .addNewDonationToDB(Receipt(
-                            id: const Uuid().v1(),
-                            donationDate: DateTime.now(),
-                            address: address,
-                            donator: widget.donator,
-                            newCategoriesWithNewValues: categories,
-                          ));
-                        }
-                      },
-                    ),
-                  ],
-                ),
+                  BlocConsumer<DonationCubit, DonationState>(
+                    listener: (context, state) {
+                      if (state is DonationAdded) {
+                        print("finished the donation you bunch of dorks");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Donation added')));
+                      } else if (state is DonationError) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Error in contacting the database')));
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is DonationAdded ||
+                          state is DonationError ||
+                          state is DonationInitial) {
+                        return ButtonWidget(
+                          text: 'Submit',
+                          onClicked: () {
+                            print("whaaaat");
+                            if (categories != null && categories.isNotEmpty) {
+                              BlocProvider.of<DonationCubit>(context)
+                                  .addNewDonationToDB(Receipt(
+                                id: const Uuid().v1(),
+                                donationDate: DateTime.now(),
+                                address: address,
+                                donator: widget.donator,
+                                newCategoriesWithNewValues: categories,
+                              ));
+                            }
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           ),

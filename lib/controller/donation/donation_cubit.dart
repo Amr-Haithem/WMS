@@ -13,8 +13,8 @@ class DonationCubit extends Cubit<DonationState> {
     print(receipt.newCategoriesWithNewValues);
 
     try {
-      await fireStoreRepo.addNewDonationToDB(receipt);
-      print(receipt.newCategoriesWithNewValues);
+      // await fireStoreRepo.addNewDonationToDB(receipt);
+      // print(receipt.newCategoriesWithNewValues);
       for (var category in receipt.newCategoriesWithNewValues) {
         await fireStoreRepo.setNewCategoryValues(
             category.id, category.busyRoom, category.totalRoom);
