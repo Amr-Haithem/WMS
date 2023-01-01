@@ -4,6 +4,7 @@ import 'package:storage_management_system/model/model/category.dart';
 
 import '../firebase/firestore.dart';
 import '../model/donator.dart';
+import '../model/receipt.dart';
 
 class FireStoreRepo {
   final FireStore fireStore = FireStore();
@@ -44,5 +45,10 @@ class FireStoreRepo {
 
   Future<void> setNewCategoryValues(int id, int newBusyRoom, int newTotalRoom) {
     return fireStore.setNewCategoryValues(id, newBusyRoom, newTotalRoom);
+  }
+
+
+  Future<void> addNewDonationToDB(Receipt receipt) {
+    return fireStore.addNewDonationToDB(receipt);
   }
 }

@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class Category {
-  final int id;
-  final IconData iconName;
-  final String name;
-  final int busyRoom;
-  final int totalRoom; //space available for more of
+  int id;
+  IconData iconName;
+  String name;
+  int busyRoom;
+  int totalRoom; //space available for more of
   Category({
     required this.id,
     required this.iconName,

@@ -5,7 +5,7 @@ import 'package:storage_management_system/constants/project_measures.dart';
 import 'package:storage_management_system/view/admin_dashboard/AdminDashboardScreen.dart';
 import 'package:storage_management_system/view/frequently_used_widgets/ButtonWidget.dart';
 import '../controller/authentication/authentication_cubit.dart';
-import 'DonationScreen.dart';
+import 'donation_screen/DonationScreen.dart';
 import 'Register.dart';
 
 const List<String> userTypes = <String>['Donator', 'Admin'];

@@ -73,6 +73,9 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                     BlocBuilder<CategoriesCubit, CategoriesState>(
                       builder: (context, parentState) {
                         if (parentState is CategoriesLoaded) {
+
+
+
                           return BlocListener<EditCategoriesCubit,
                                   EditCategoriesState>(
                               listener: (context, state) {
@@ -93,7 +96,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                                       categories: parentState.categories));
                         } else if (parentState is CategoriesError) {
                           return Center(
-                            child: Text("error"),
+                            child: Text("Error you stupid"),
                           );
                         } else {
                           return Center(child: CircularProgressIndicator());

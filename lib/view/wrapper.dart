@@ -5,7 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:storage_management_system/controller/authentication/authentication_cubit.dart';
 import 'package:storage_management_system/model/firebase/authentication.dart';
-import 'package:storage_management_system/view/DonationScreen.dart';
+import 'package:storage_management_system/view/donation_screen/DonationScreen.dart';
 import 'package:storage_management_system/view/TabBarScreen.dart';
 
 import '../app_router.dart';
@@ -23,7 +23,8 @@ class Wrapper extends StatelessWidget {
             Navigator.pushNamed(context, adminDashBoardScreenUrl);
           } else if (!state.isAdmin) {
             print("authenticated");
-            Navigator.pushNamed(context, donationScreenUrl);
+            Navigator.pushNamed(context, donationScreenUrl,
+                arguments: state.donator);
           }
         }
       },

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:storage_management_system/constants/project_colors.dart';
 import 'package:storage_management_system/controller/authentication/authentication_cubit.dart';
 
-import 'DonationScreen.dart';
+import 'donation_screen/DonationScreen.dart';
 import 'frequently_used_widgets/ButtonWidget.dart';
 
 class Register extends StatefulWidget {
